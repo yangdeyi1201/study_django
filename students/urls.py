@@ -18,5 +18,8 @@ app_name = 'students'
 urlpatterns = [
     path('<int:sid>', views.student_detail, name='s_detail'),
     # 正则匹配 1900-2099 年所有月份
-    re_path(r'^(?P<year>19\d?\d|20\d?\d)-(?P<month>[1-9]|0[1-9]|1[0-2])$', views.student_list, name='s_year_month')
+    re_path(r'^(?P<year>19\d?\d|20\d?\d)-(?P<month>[1-9]|0[1-9]|1[0-2])$', views.student_list, name='s_year_month'),
+    path('search', views.search, name='search'),
+    path('login', views.login, name='login'),
+    path('students.json', views.student_list_api, name='students.json')
 ]
