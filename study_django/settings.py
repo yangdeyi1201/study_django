@@ -123,3 +123,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# url匹配不到路由且末尾不以/结尾时：是否末尾自动加/重定向匹配
+APPEND_SLASH = False

@@ -9,5 +9,5 @@ from . import views
 app_name = 'erp'
 
 urlpatterns = [
-    path('api/', views.api, name='api')
+    path('api', views.api, name='api')
 ]
