@@ -51,10 +51,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'study_django.urls'
 
+# 模板配置
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [str(BASE_DIR/'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,7 +118,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# 静态文件url前缀
 STATIC_URL = '/static/'
+
+# 静态文件的路径
+STATICFILES_DIRS = [str(BASE_DIR/'static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

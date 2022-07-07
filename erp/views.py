@@ -7,4 +7,8 @@ from django.urls import reverse
 
 def api(request):
     print(reverse('erp:api'))
-    return HttpResponse('erp:接口自动化平台')
+    # 准备渲染数据
+    title_1, title_2 = 'erp首页面', 'erp副页面'
+    content = {'title_1': title_1, 'title_2': title_2}
+    # 渲染模板, 返回 html 响应
+    return render(request=request, template_name='erp/index.html', context=content)

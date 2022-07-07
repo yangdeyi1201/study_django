@@ -7,4 +7,8 @@ from django.urls import reverse
 
 def api(request):
     print(reverse('crm:api'))
-    return HttpResponse('crm:接口自动化平台')
+    # 准备渲染数据
+    title_1, title_2 = 'crm首页面', 'crm副页面'
+    content = {'title_1': title_1, 'title_2': title_2}
+    # 渲染模板, 返回 html 响应
+    return render(request=request, template_name='crm/index.html', context=content)
