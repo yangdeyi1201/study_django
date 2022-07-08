@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http.response import HttpResponse, JsonResponse
+from django.views import View
 from django.urls import reverse
 import json
 
@@ -45,6 +46,22 @@ def login(request):
             username, password = request.POST.get('username'), request.POST.get('password')
         return HttpResponse('登录成功') if username == 'admin' and password == '111111' else HttpResponse('用户名密码错误!')
 
+
+class Login(View):
+
+    @staticmethod
+    def get(request):
+        return render(request, 'students/login.html')
+
+    @staticmethod
+    def post(request):
+        username, password = None, None
+        if request.content_type == 'application/json':
+            data = json.loads(request.body)
+            username, password = data.get('username'), data.get('password')
+        elif request.content_type in ('application/x-www-form-urlencoded', 'multipart/form-data'):
+            username, password = request.POST.get('username'), request.POST.get('password')
+        return HttpResponse('登录成功') if username == 'admin' and password == '111111' else HttpResponse('用户名密码错误!')
 
 # 非post方法发送的x-www-form-urlencoded表单, 可通过下面方式转成字典形式拿取表单参数
 # dict([kv.split('=') for kv in re.search(r"b'(.*?)'", str(request.body)).group(1).split('&')])
